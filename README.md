@@ -120,28 +120,24 @@ xop4jvrkywz4ldsgwqmfacssc * manager Ready Active Leader 19.03.13
 bghrkp7ll1b9lb0ikv8x51gzy worker-01 Ready Active 19.03.13
 ```
 ## Steps for deployment of OpenFaaS based AI Engine
-
-0. Make sure that Docker Swarm is initialised.
-1. Install the AI Engine version of OpenFaaS by clonning this repository.
+0. Complete successfully previos steps or make sure that Docker Swarm is initialised.
+1. Install the AI Engine version of OpenFaaS by clonning this repository. Please ensure you have the rights to clone the repository.
 ``` Bash 
-git clone 
+https://github.com/Charlemagne2017/AIEngine-OpenFaaS.git 
 ```
-
-2. Create username:
+2. Go on the folder of AIEngine.
+3. Create username:
     ``` Bash 
     echo admin | docker secret create basic-auth-user -
     echo 12345 | docker secret create basic-auth-password -
     ```
-3. Deploy the OpenFaaS stack via
+4. Deploy the OpenFaaS stack via
 	``` Bash
 	docker stack deploy func -c docker-compose.yml
 	```
 4. Install faas-cli. Instructions [here](https://docs.openfaas.com/cli/install/)
 4. Connect to Grafana and add Prometheus as a new datasource using the url [http://func_prometheus:9090](http://func_prometheus:9090).
-5. Use the python3-aiengine template from the template folder to create a new function. The python3-aiengine template contains the new, more efficient of_watchdog and boilerplate code for the monitoring.
+5. To test use use python3-aiengine template from the template folder to create a new function. The python3-aiengine template contains the new, more efficient of_watchdog and boilerplate code for the monitoring.
 ``` Bash
 faas-cli new --lang python3-aiengine <name>
 ```
-
-
-
